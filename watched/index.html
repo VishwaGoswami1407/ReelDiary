@@ -1,0 +1,8 @@
+---
+title: Watched
+permalink: /watched/
+description: All the films I have watched and reviewed.
+---
+{% assign watched = site.movies | where: 'status', 'watched' | sort: 'year' | reverse %}
+<section class="page-heading container"><p class="eyebrow">ROLL THE CREDITS</p><h1>STORIES <em>WATCHED.</em></h1><p>The finished stories, the lasting impressions. Listed by release year.</p></section>
+<section class="container section inner-list"><div class="movie-grid">{% for movie in watched %}{% include movie-card.html movie=movie %}{% endfor %}</div>{% if watched.size == 0 %}<p class="empty-state">No films logged yet. Your story starts with one.</p>{% endif %}</section>

@@ -1,0 +1,21 @@
+---
+title: Stats
+permalink: /stats/
+description: A visual look at the films, genres, and ratings in ReelDiary.
+---
+{% assign watched = site.movies | where: 'status', 'watched' %}
+{% assign watching = site.movies | where: 'status', 'watching' %}
+<section class="page-heading container"><p class="eyebrow">BEHIND THE NUMBERS</p><h1>THE BIG <em>PICTURE.</em></h1><p>A few ways to see a movie habit take shape.</p></section>
+<section class="container stats-content">
+  <div class="stats-overview reveal"><div><span class="stat-icon">▣</span><strong>{{ site.movies | size }}</strong><span>Total titles</span></div><div><span class="stat-icon">★</span><strong>{{ watched | size }}</strong><span>Watched</span></div><div><span class="stat-icon">◉</span><strong>{{ watching | size }}</strong><span>In progress</span></div></div>
+  <div class="chart-grid"><div class="chart-card reveal"><p class="eyebrow">THE TIMELINE</p><h2>Films by year</h2><div class="chart-wrap"><canvas id="year-chart" role="img" aria-label="Bar chart showing movies by release year"></canvas></div></div><div class="chart-card reveal"><p class="eyebrow">THE MIX</p><h2>Genre split</h2><div class="chart-wrap"><canvas id="genre-chart" role="img" aria-label="Doughnut chart showing genre split"></canvas></div></div><div class="chart-card chart-wide reveal"><p class="eyebrow">THE VERDICT</p><h2>Rating distribution</h2><div class="chart-wrap"><canvas id="rating-chart" role="img" aria-label="Bar chart showing rating distribution"></canvas></div></div></div>
+  <p class="stats-note">Charts include movies, web series, and short films, including your watchlist. Years are release years; unrated titles are excluded from the rating chart.</p>
+  <p class="stats-note" id="ratings-empty" hidden>No personal ratings yet. Add a rating to an entry to start your rating chart.</p>
+  <details class="stats-table">
+    <summary>View the chart data</summary>
+    <div class="table-scroll">
+      <table><caption>All diary entries</caption><thead><tr><th scope="col">Title</th><th scope="col">Format</th><th scope="col">Year</th><th scope="col">Genre</th><th scope="col">Rating</th></tr></thead><tbody>{% for movie in site.movies %}<tr><th scope="row">{{ movie.title }}</th><td>{{ movie.format }}</td><td>{{ movie.year }}</td><td>{{ movie.genre }}</td><td>{{ movie.rating | default: 'Unrated' }}</td></tr>{% endfor %}</tbody></table>
+    </div>
+  </details>
+  <div id="stats-data" hidden>{% for movie in site.movies %}<span data-year="{{ movie.year }}" data-genre="{{ movie.genre | escape }}" data-rating="{{ movie.rating }}"></span>{% endfor %}</div>
+</section>

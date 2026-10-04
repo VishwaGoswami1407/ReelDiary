@@ -1,0 +1,21 @@
+---
+title: All Movies
+permalink: /movies/
+description: Browse every film in the ReelDiary collection.
+---
+<section class="page-heading container"><p class="eyebrow">THE COMPLETE COLLECTION</p><h1>THE SCREEN <em>ARCHIVE.</em></h1><p>Movies, web series, and short films. Every language, every story.</p></section>
+<section class="archive container" data-archive>
+  <div class="archive-toolbar"><label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">Search movies by title</span><input id="movie-search" type="search" placeholder="Search a title..." autocomplete="off"></label><label class="sort-field">Sort by <select id="movie-sort" aria-label="Sort movies"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="rating">Highest rated</option><option value="az">A–Z</option></select></label></div>
+  <div class="filter-panel">
+    <div class="filter-row"><span class="filter-label">FORMAT</span><div class="filter-options" data-filter="format"></div></div>
+    <div class="filter-row"><span class="filter-label">CINEMA</span><div class="filter-options" data-filter="cinema"></div></div>
+    <div class="filter-row"><span class="filter-label">LANGUAGE</span><div class="filter-options" data-filter="language"></div></div>
+    <div class="filter-row"><span class="filter-label">GENRE</span><div class="filter-options" data-filter="genre"></div></div>
+    <div class="filter-row"><span class="filter-label">YEAR</span><div class="filter-options" data-filter="year"></div></div>
+    <div class="filter-row"><span class="filter-label">RATING</span><div class="filter-options" data-filter="rating"></div></div>
+    <div class="filter-row"><span class="filter-label">STATUS</span><div class="filter-options" data-filter="status"></div></div>
+  </div>
+  <div class="archive-count"><span id="result-count" role="status" aria-live="polite">{{ site.movies | size }} titles</span><span class="rule"></span></div>
+  <div class="movie-grid" id="archive-grid">{% for movie in site.movies %}{% include movie-card.html movie=movie %}{% endfor %}</div>
+  <p class="empty-state" id="no-results" hidden>No titles match those filters yet. Try another search.</p>
+</section>

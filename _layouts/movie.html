@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<section class="detail-hero container">
+  <a class="back-link" href="{{ '/movies/' | relative_url }}">← Back to all movies</a>
+  <div class="detail-grid">
+    <div class="detail-poster-wrap reveal">
+      <img class="detail-poster" src="{{ page.poster | escape }}" alt="{{ page.title | escape }} poster" onerror="this.onerror=null;this.src='{{ '/assets/poster-fallback.svg' | relative_url }}'">
+    </div>
+    <div class="detail-copy reveal">
+      <p class="eyebrow">The film file <span class="dot"></span> {{ page.status | replace: '-', ' ' | capitalize }}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="detail-meta">{{ page.year }} <span>✦</span> {{ page.genre }} <span>✦</span> {{ page.language }}</p>
+      <p class="detail-meta">{{ page.format }} <span>✦</span> {{ page.cinema }}</p>
+      {% if page.rating %}<div class="detail-score"><span aria-hidden="true">★</span> {{ page.rating }}<small>/ 10</small></div>{% else %}<p class="detail-meta">Not yet rated</p>{% endif %}
+      <div class="detail-divider"></div>
+      {% if page.summary %}<p class="eyebrow">The story</p><p class="story-summary">{{ page.summary }}</p>{% endif %}
+      <p class="eyebrow">My thoughts</p>
+      <p class="review">{{ page.review | default: 'No review yet.' }}</p>
+      {% if content != '' %}<div class="detail-body">{{ content }}</div>{% endif %}
+      {% if page.date_watched %}<p class="watched-date">Watched on {{ page.date_watched | date: '%B %-d, %Y' }}</p>{% endif %}
+      {% if page.metadata_source %}<p class="watched-date"><a href="{{ page.metadata_source | escape }}" target="_blank" rel="noopener noreferrer">Title information and poster: {{ page.metadata_provider | default: 'TVmaze' }} ↗</a></p>{% endif %}
+      <a class="button button-outline" href="{{ '/movies/' | relative_url }}">Explore more films <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+{% include scene-thoughts.html %}

@@ -1,0 +1,37 @@
+<a class="movie-card reveal {% if include.movie.status == 'watching' %}is-watching{% endif %}"
+   href="{{ include.movie.url | relative_url }}"
+   data-title="{{ include.movie.title | downcase | escape }}"
+   data-year="{{ include.movie.year }}"
+   data-genre="{{ include.movie.genre | escape }}"
+   data-rating="{{ include.movie.rating }}"
+   data-status="{{ include.movie.status }}"
+   data-format="{{ include.movie.format | escape }}"
+   data-cinema="{{ include.movie.cinema | escape }}"
+   data-language="{{ include.movie.language | escape }}"
+   aria-label="Read my diary entry for {{ include.movie.title | escape }}">
+  <div class="poster-frame">
+    <img src="{{ include.movie.poster | escape }}" alt="{{ include.movie.title | escape }} poster" loading="lazy" width="400" height="600" onerror="this.onerror=null;this.src='{{ '/assets/poster-fallback.svg' | relative_url }}'">
+    <span class="poster-badge {% unless include.movie.status == 'watching' %}muted-badge{% endunless %}">
+      {% if include.movie.status == 'watching' %}<span class="pulse-dot"></span>{% endif %}
+      {{ include.movie.status | capitalize }}
+    </span>
+    <span class="poster-shine" aria-hidden="true"></span>
+  </div>
+  <div class="diary-card-body">
+    <p class="card-kicker">{{ include.movie.format }} <span> / </span> {{ include.movie.cinema }}</p>
+    <h3>{{ include.movie.title }}</h3>
+    <p class="card-meta">{{ include.movie.year }} <span>·</span> {{ include.movie.genre }} <span>·</span> {{ include.movie.language }}</p>
+    <div class="card-summary">
+      <span class="card-section-label">THE STORY</span>
+      <p>{{ include.movie.summary | default: 'A story in my personal diary. Summary coming soon.' }}</p>
+    </div>
+    <div class="card-thoughts">
+      <span class="card-section-label">MY THOUGHTS</span>
+      <p>{{ include.movie.review | default: 'I haven’t written my thoughts yet.' }}</p>
+    </div>
+    <div class="card-bottom">
+      {% if include.movie.rating %}<span class="card-rating" aria-label="My rating: {{ include.movie.rating }} out of 10"><span aria-hidden="true">★</span> {{ include.movie.rating }}<small> / 10</small></span>{% else %}<span class="card-unrated">Not rated yet</span>{% endif %}
+      <span class="card-read">Open diary <span aria-hidden="true">↗</span></span>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,47 @@
+title: ReelDiary
+description: A personal archive of films, feelings, and frames worth remembering.
+url: "https://VishwaGoswami1407.github.io"
+baseurl: "/ReelDiary"
+lang: en
+author: ReelDiary
+timezone: Asia/Kolkata
+
+# Leave blank for an explicitly labeled browser-only preview.
+# Use a public/publishable key, never a service-role or secret key.
+scene_thoughts:
+  supabase_url: ""
+  public_key: ""
+
+collections:
+  movies:
+    output: true
+    permalink: /movies/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: movies
+    values:
+      layout: movie
+      format: Movie
+      cinema: Other
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - _examples
+  - README.md
+  - SOURCE.md
+  - PENDING_TITLES.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - supabase
+  - tests

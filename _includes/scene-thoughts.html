@@ -1,0 +1,62 @@
+<section class="scene-thoughts container" id="scene-thoughts"
+         data-movie-id="{{ page.slug | escape }}"
+         data-supabase-url="{{ site.scene_thoughts.supabase_url | escape }}"
+         data-public-key="{{ site.scene_thoughts.public_key | escape }}">
+  <div class="section-heading">
+    <div><p class="eyebrow">A MOMENT WORTH TALKING ABOUT</p><h2>SCENE <em>THOUGHTS.</em></h2></div>
+    <span class="scene-count" id="scene-count"></span>
+  </div>
+  <p class="scene-intro">Pin a feeling to a moment. A beginning, a twist, a final frame.</p>
+  <p class="scene-storage-note" id="scene-storage-note"></p>
+  <noscript><p>Enable JavaScript to read and share Scene Thoughts.</p></noscript>
+
+  <form class="scene-form" id="scene-form">
+    <div class="scene-form-top">
+      <label>Choose a moment
+        <select name="scene" id="thought-scene">
+          <option value="beginning">Beginning</option>
+          <option value="interval">Interval</option>
+          <option value="climax">Climax</option>
+          <option value="ending">Ending</option>
+          <option value="custom">Custom timestamp</option>
+        </select>
+      </label>
+      <label id="timestamp-field" hidden>Timestamp
+        <input name="timestamp" id="thought-timestamp" type="text" placeholder="1:45:20" maxlength="8" inputmode="numeric" aria-describedby="timestamp-help">
+        <small id="timestamp-help">Use mm:ss or hh:mm:ss.</small>
+      </label>
+    </div>
+    <label for="thought-body">Your thought</label>
+    <textarea name="body" id="thought-body" rows="3" minlength="3" maxlength="1000" required placeholder="That one moment I keep thinking about…"></textarea>
+    <div class="scene-character-count"><span id="thought-character-count">0</span> / 1000</div>
+    <fieldset class="scene-moods">
+      <legend>How did it feel?</legend>
+      <label><input type="radio" name="mood" value="🥰" checked><span title="Loved it" aria-label="Loved it">🥰</span></label>
+      <label><input type="radio" name="mood" value="😂"><span title="Made me laugh" aria-label="Made me laugh">😂</span></label>
+      <label><input type="radio" name="mood" value="😢"><span title="Moved me" aria-label="Moved me">😢</span></label>
+      <label><input type="radio" name="mood" value="😮"><span title="Surprised me" aria-label="Surprised me">😮</span></label>
+      <label><input type="radio" name="mood" value="🤯"><span title="Mind blown" aria-label="Mind blown">🤯</span></label>
+      <label><input type="radio" name="mood" value="😡"><span title="Frustrated me" aria-label="Frustrated me">😡</span></label>
+    </fieldset>
+    <div class="scene-form-bottom">
+      <label class="check-label"><input type="checkbox" name="spoiler" checked> Contains a spoiler</label>
+      <button class="button button-primary" id="post-thought" type="submit">Pin this thought <span aria-hidden="true">↗</span></button>
+    </div>
+  </form>
+
+  <div class="scene-reader-toolbar">
+    <div class="scene-filters" role="group" aria-label="Prioritize thoughts by scene">
+      <button type="button" data-scene="all" aria-pressed="true">All</button>
+      <button type="button" data-scene="beginning" aria-pressed="false">Beginning</button>
+      <button type="button" data-scene="interval" aria-pressed="false">Interval</button>
+      <button type="button" data-scene="climax" aria-pressed="false">Climax</button>
+      <button type="button" data-scene="ending" aria-pressed="false">Ending</button>
+      <button type="button" data-scene="custom" aria-pressed="false">Timestamps</button>
+    </div>
+    <label class="check-label"><input type="checkbox" id="hide-spoilers" checked> Hide spoilers</label>
+  </div>
+  <div class="scene-ranking-line"><p id="scene-ranking">Most reactions first, then newest.</p><button type="button" class="scene-refresh" id="refresh-thoughts">Refresh ↻</button></div>
+  <p class="scene-message" id="scene-message" role="status" aria-live="polite"></p>
+  <div class="scene-list" id="scene-list" aria-busy="true"></div>
+  <button class="button button-outline scene-more" id="more-thoughts" type="button" hidden>More thoughts ↓</button>
+</section>

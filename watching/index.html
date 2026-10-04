@@ -1,0 +1,8 @@
+---
+title: Currently Watching
+permalink: /watching/
+description: The films currently playing in my personal movie diary.
+---
+{% assign watching = site.movies | where: 'status', 'watching' %}
+<section class="page-heading container"><p class="eyebrow"><span class="live-dot"></span> ON THE SCREEN RIGHT NOW</p><h1>CURRENTLY <em>WATCHING.</em></h1><p>Stories in progress. The final verdict can wait.</p></section>
+<section class="container section inner-list"><div class="movie-grid">{% for movie in watching %}{% include movie-card.html movie=movie %}{% endfor %}</div>{% if watching.size == 0 %}<p class="empty-state">Nothing on the screen right now. Check back soon.</p>{% endif %}</section>

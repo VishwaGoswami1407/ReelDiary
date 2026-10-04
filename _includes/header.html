@@ -1,0 +1,15 @@
+<header class="site-header" id="site-header">
+  <nav class="nav container" aria-label="Main navigation">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="ReelDiary home"><span class="brand-mark" aria-hidden="true">✦</span> REEL<span>DIARY</span><span class="brand-dot">.</span></a>
+    <button class="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="nav-links">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
+      <a href="{{ '/movies/' | relative_url }}" {% if page.url == '/movies/' %}aria-current="page"{% endif %}>All Movies</a>
+      <a href="{{ '/watching/' | relative_url }}" {% if page.url == '/watching/' %}aria-current="page"{% endif %}>Watching</a>
+      <a href="{{ '/watched/' | relative_url }}" {% if page.url == '/watched/' %}aria-current="page"{% endif %}>Watched</a>
+      <a href="{{ '/stats/' | relative_url }}" {% if page.url == '/stats/' %}aria-current="page"{% endif %}>Stats</a>
+      <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About</a>
+      <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle theme"><span class="theme-icon" aria-hidden="true">☼</span></button>
+    </div>
+  </nav>
+</header>

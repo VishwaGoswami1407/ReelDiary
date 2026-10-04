@@ -1,0 +1,263 @@
+.scene-thoughts {
+  padding-block: 35px 85px;
+  border-top: 1px solid var(--line);
+}
+.scene-intro,.scene-storage-note {
+  color: var(--muted);
+  font-size: 12px;
+}
+.scene-storage-note {
+  border-left: 2px solid var(--gold);
+  padding-left: 12px;
+  margin-bottom: 28px;
+  font-size: 10px;
+}
+.scene-count {
+  font-size: 10px;
+  color: var(--muted);
+}
+.scene-form {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 22px;
+}
+.scene-form label,.scene-moods legend {
+  font-size: 11px;
+  color: var(--muted);
+}
+.scene-form-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.scene-form-top>label {
+  display: flex;
+  flex: 1;
+  min-width: 160px;
+  flex-direction: column;
+  gap: 7px;
+}
+.scene-form input[type=text],.scene-form select,.scene-form textarea {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 11px 13px;
+  font: 12px/1.7 Poppins,sans-serif;
+  width: 100%;
+}
+.scene-form textarea {
+  resize: vertical;
+  min-height: 95px;
+  display: block;
+  margin-top: 8px;
+}
+.scene-form small,.scene-character-count {
+  font-size: 9px;
+  color: var(--muted);
+}
+.scene-character-count {
+  text-align: right;
+  margin-top: 6px;
+}
+.scene-moods {
+  border: 0;
+  padding: 0;
+  margin: 10px 0 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.scene-moods legend {
+  margin-bottom: 10px;
+}
+.scene-moods label {
+  position: relative;
+}
+.scene-moods input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.scene-moods span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 21px;
+  transition: transform .2s,border-color .2s;
+}
+.scene-moods input:checked+span {
+  border-color: var(--gold);
+  background: color-mix(in srgb,var(--gold) 10%,transparent);
+  transform: translateY(-3px);
+}
+.scene-moods input:focus-visible+span {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.scene-form-bottom,.scene-reader-toolbar,.scene-ranking-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.check-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.check-label input {
+  accent-color: var(--gold);
+  width: 15px;
+  height: 15px;
+}
+.scene-reader-toolbar {
+  padding-top: 30px;
+}
+.scene-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.scene-filters button,.scene-refresh {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 7px 11px;
+  font-size: 10px;
+}
+.scene-filters button[aria-pressed=true] {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.scene-ranking-line {
+  margin-block: 18px;
+}
+.scene-ranking-line p {
+  font-size: 10px;
+  color: var(--muted);
+  margin: 0;
+}
+.scene-refresh {
+  border: 0;
+  color: var(--gold);
+}
+.scene-message {
+  font-size: 11px;
+  color: var(--gold);
+}
+.scene-message:empty {
+  display: none;
+}
+.scene-message.is-error {
+  color: #e68992;
+}
+.scene-list {
+  display: grid;
+  gap: 14px;
+}
+.thought-card {
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 20px;
+  background: var(--surface);
+}
+.thought-card.is-match {
+  border-left: 3px solid var(--gold);
+}
+.thought-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.thought-heading h3 {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0;
+}
+.thought-date {
+  color: var(--muted);
+  font-size: 9px;
+}
+.thought-mood {
+  margin-right: 9px;
+  font-size: 22px;
+  vertical-align: middle;
+}
+.thought-body {
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+.spoiler-reveal {
+  display: block;
+  width: 100%;
+  border: 1px dashed var(--line);
+  border-radius: 5px;
+  background: color-mix(in srgb,var(--red) 10%,transparent);
+  padding: 20px;
+  color: var(--gold);
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+.thought-reactions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.reaction-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-size: 12px;
+}
+.reaction-button[aria-pressed=true] {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.reaction-button:active {
+  transform: scale(.92);
+}
+.reaction-total {
+  font-size: 9px;
+  color: var(--muted);
+  margin-left: auto;
+}
+.scene-more {
+  margin: 25px auto 0;
+}
+.scene-thoughts button:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+@media(min-width:700px) {
+  .scene-form {
+    padding: 30px;
+  }
+  .scene-thoughts {
+    max-width: 1000px;
+  }
+}
